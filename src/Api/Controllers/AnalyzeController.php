@@ -55,7 +55,7 @@ class AnalyzeController extends BaseController {
         for ( $i = $server_index; $i < $total_keys; $i++ ) {
             if ( get_transient( 'aidofy_meta_cooldown_' . $i ) ) continue;
 
-            $ai_response = $client->analyze( 'gemini-3.5-flash-lite', $i, $system_instr, $text_input, $user_prompt, $base64_data, $mime_type );
+            $ai_response = $client->analyze( 'gemini-3.1-flash-lite', $i, $system_instr, $text_input, $user_prompt, $base64_data, $mime_type );
 
             if ( ! is_wp_error( $ai_response ) ) {
                 $server_index = $i;
