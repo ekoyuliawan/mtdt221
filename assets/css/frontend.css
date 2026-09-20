@@ -1,0 +1,347 @@
+/* AIdoforyou Stock Metadata Generator — Theme 4: Midnight Prism */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --afy-bg-base: #0D1117;
+  --afy-bg-surface: #1E293B;
+  --afy-bg-surface-light: #334155;
+  --afy-border-dim: #334155;
+  --afy-text-main: #F1F5F9;
+  --afy-text-muted: #94A3B8;
+  --afy-accent-cyan: #3B82F6;
+  --afy-accent-cyan-glow: rgba(59, 130, 246, 0.15);
+  --afy-accent-violet: #8B5CF6;
+  --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  --afy-danger: #EF4444;
+  --afy-success: #10B981;
+}
+
+#aidofy-meta-app.aidofy-theme-prism,
+#aidofy-meta-app.aidofy-theme-prism * { box-sizing: border-box; }
+
+#aidofy-meta-app.aidofy-theme-prism {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  max-width: 950px; margin: 0 auto;
+  color: var(--afy-text-main); line-height: 1.5; font-size: 15px;
+  background: var(--afy-bg-base); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--afy-border-dim);
+}
+
+@keyframes aidofy-meta-fade-up { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes aidofy-meta-spin { to { transform: rotate(360deg); } }
+@keyframes aidofy-pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+
+.aidofy-meta-fade-in { animation: aidofy-meta-fade-up .3s ease-out both; }
+
+/* ── Topbar ─────────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-topbar { 
+  display: flex; align-items: center; justify-content: space-between; 
+  padding: 18px 24px; background: rgba(13, 17, 23, 0.8);
+  border-bottom: 1px solid var(--afy-border-dim);
+  flex-wrap: wrap; gap: 12px;
+}
+#aidofy-meta-app .aidofy-meta-brand { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+#aidofy-meta-app .aidofy-meta-brand svg { color: var(--afy-accent-cyan); } 
+#aidofy-meta-app .aidofy-meta-version-badge { font-size: 10px; font-weight: 800; color: #A855F7; background: rgba(168, 85, 247, 0.15); padding: 3px 8px; border-radius: 6px; letter-spacing: 0.05em; }
+
+#aidofy-meta-app .aidofy-meta-topbar-right { display: flex; gap: 12px; align-items: center; }
+#aidofy-meta-app .aidofy-meta-account-id-pill {
+  font-size: 12px; color: var(--afy-text-muted); background: var(--afy-bg-surface); 
+  padding: 6px 14px; border-radius: 8px; border: 1px solid var(--afy-border-dim); 
+  font-family: ui-monospace, monospace; cursor: pointer; transition: all .2s;
+}
+#aidofy-meta-app .aidofy-meta-account-id-pill:hover { color: #fff; border-color: var(--afy-accent-violet); }
+#aidofy-meta-app .aidofy-meta-credits-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--afy-bg-surface);
+  border: 1px solid var(--afy-border-dim); border-radius: 8px;
+  padding: 6px 16px; font-size: .85rem; font-weight: 600; color: #fff;
+}
+#aidofy-meta-app .aidofy-meta-credits-pill svg { color: #FBBF24; }
+
+/* ── Alert Box (Restored) ───────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-alert {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(239, 68, 68, 0.1); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px; padding: 14px 16px; margin: 20px 24px 0;
+  font-size: .9rem; font-weight: 500; animation: aidofy-meta-fade-up .25s ease;
+}
+
+/* ── Workspace / General ────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-workspace { padding: 36px; }
+#aidofy-meta-app .aidofy-upload-header { text-align: center; margin-bottom: 24px; }
+#aidofy-meta-app .aidofy-upload-header h2 { margin: 0 0 8px; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+#aidofy-meta-app .aidofy-upload-header p { margin: 0; color: var(--afy-text-muted); font-size: .95rem; }
+
+/* ── Main Grid ──────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-main-grid { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start; padding: 24px; }
+@media (max-width:768px) { #aidofy-meta-app .aidofy-meta-main-grid { grid-template-columns: 1fr; padding: 16px; } }
+
+#aidofy-meta-app .aidofy-meta-persistent-image-col { display: flex; flex-direction: column; position: sticky; top: 20px; }
+#aidofy-meta-app .aidofy-meta-thumb-wrap {
+  position: relative; width: 100%; border-radius: 12px; overflow: hidden; 
+  border: 1px solid var(--afy-border-dim); background: var(--afy-bg-surface);
+  flex-shrink: 0; transition: opacity 0.2s ease; margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); line-height: 0;
+}
+#aidofy-meta-app .aidofy-meta-thumb-wrap img,
+#aidofy-meta-app .aidofy-meta-thumb-wrap video { width: 100%; height: auto; display: block; }
+#aidofy-meta-app .aidofy-text-preview { background: var(--afy-bg-surface); padding: 24px; text-align: center; line-height: 1.5; color: var(--afy-accent-cyan); border: 1px solid var(--afy-border-dim); }
+#aidofy-meta-app .aidofy-text-preview p { margin: 12px 0 20px; font-size: 13px; color: var(--afy-text-main); font-style: italic; }
+
+#aidofy-meta-app .aidofy-meta-thumb-remove {
+  position: absolute; top: 10px; right: 10px; width: 32px; height: 32px;
+  border: 1px solid var(--afy-border-dim); border-radius: 50%; background: var(--afy-bg-surface-light); color: #ffffff !important;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s; z-index: 10; padding: 0;
+}
+/* EXTREME OVERRIDE FOR THE X BUTTON */
+#aidofy-meta-app .aidofy-meta-thumb-remove svg { 
+    stroke: #ffffff !important; 
+    fill: none !important; 
+    width: 16px !important; 
+    height: 16px !important; 
+    display: block !important; 
+}
+#aidofy-meta-app .aidofy-meta-thumb-remove:hover { background: var(--afy-danger); border-color: var(--afy-danger); transform: scale(1.05); }
+
+/* Absolute Post-Generation Lock */
+#aidofy-meta-app.aidofy-state-result .aidofy-meta-thumb-remove,
+#aidofy-meta-app.aidofy-state-result .aidofy-meta-cancel-btn {
+    display: none !important; pointer-events: none;
+}
+#aidofy-meta-app.aidofy-is-locked .aidofy-meta-thumb-remove,
+#aidofy-meta-app.aidofy-is-locked .aidofy-meta-cancel-btn {
+    display: none !important; pointer-events: none;
+}
+
+/* ── Refined Thumb Status Bar (Full Width Architectural) ────────── */
+#aidofy-meta-app #aidofy-meta-preview-list { display: flex; flex-direction: column; gap: 16px; max-height: 500px; overflow-y: auto; padding-right: 8px; }
+#aidofy-meta-app #aidofy-meta-preview-list::-webkit-scrollbar { width: 6px; }
+#aidofy-meta-app #aidofy-meta-preview-list::-webkit-scrollbar-track { background: transparent; }
+#aidofy-meta-app #aidofy-meta-preview-list::-webkit-scrollbar-thumb { background: var(--afy-bg-surface-light); border-radius: 4px; }
+
+#aidofy-meta-app .aidofy-meta-thumb-status {
+  position: absolute; bottom: 0; left: 0; right: 0; width: 100%;
+  padding: 10px 14px; background: rgba(13, 17, 23, 0.9); color: #fff;
+  font-size: 12px; font-weight: 600; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10;
+  border-top: 1px solid var(--afy-border-dim); letter-spacing: 0.02em;
+}
+#aidofy-meta-app .aidofy-status-done { border-top-color: rgba(16, 185, 129, 0.5); color: #34D399; }
+#aidofy-meta-app .aidofy-status-error { border-top-color: rgba(239, 68, 68, 0.5); color: #F87171; }
+#aidofy-meta-app .aidofy-status-canceled { border-top-color: rgba(148, 163, 184, 0.5); color: #94A3B8; }
+#aidofy-meta-app .aidofy-status-processing { border-top-color: rgba(59, 130, 246, 0.5); color: #60A5FA; animation: aidofy-pulse-glow 2s infinite; }
+
+#aidofy-meta-app .aidofy-meta-image-info { text-align: center; margin-top: 12px; }
+#aidofy-meta-app .aidofy-meta-filename-text { font-size: .88rem; font-weight: 700; color: #fff; margin: 0 0 4px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#aidofy-meta-app .aidofy-meta-image-tip { font-size: .75rem; color: var(--afy-text-muted); margin: 0; font-weight: 500; }
+
+/* ── Tabs ───────────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-tabs-wrap {
+  display: inline-flex; gap: 6px; justify-content: center;
+  background: var(--afy-bg-surface); padding: 6px; border-radius: 12px; margin: 0 auto 24px;
+  border: 1px solid var(--afy-border-dim);
+}
+#aidofy-meta-app .aidofy-meta-tab-btn {
+  background: transparent; border: none; padding: 10px 24px; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600; color: var(--afy-text-muted); cursor: pointer;
+  display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+}
+#aidofy-meta-app .aidofy-meta-tab-btn:hover { color: #fff; }
+#aidofy-meta-app .aidofy-meta-tab-btn.active { background: var(--afy-bg-surface-light); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
+
+/* ── Dropzone ───────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-dropzone {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; padding: 60px 24px; border: 2px dashed var(--afy-bg-surface-light); border-radius: 16px;
+  background: rgba(30, 41, 59, 0.3); cursor: pointer; text-align: center; transition: all .3s ease;
+}
+#aidofy-meta-app .aidofy-meta-dropzone:hover, #aidofy-meta-app .aidofy-meta-dropzone.over {
+  border-color: var(--afy-accent-cyan); background: var(--afy-accent-cyan-glow);
+}
+#aidofy-meta-app .aidofy-meta-dz-icon { color: var(--afy-text-muted); transition: color .3s; }
+#aidofy-meta-app .aidofy-meta-dropzone:hover .aidofy-meta-dz-icon { color: var(--afy-accent-cyan); }
+#aidofy-meta-app .aidofy-meta-dz-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
+#aidofy-meta-app .aidofy-meta-dz-meta { font-size: .85rem; color: var(--afy-text-muted); margin: 0; }
+
+/* ── Form Inputs & Settings ─────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-section-heading { font-size: 1.1rem; font-weight: 700; margin: 0 0 20px; color: #fff; border-bottom: 1px solid var(--afy-border-dim); padding-bottom: 12px; }
+#aidofy-meta-app .aidofy-meta-field { margin-bottom: 20px; }
+#aidofy-meta-app .aidofy-meta-field-label { display: block; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--afy-text-muted); margin-bottom: 8px; }
+#aidofy-meta-app .aidofy-meta-hint { font-size: .85rem; color: #64748b; margin: 0 0 10px 0; }
+#aidofy-meta-app .aidofy-meta-input, #aidofy-meta-app .aidofy-meta-select {
+  width: 100%; padding: 14px 16px; font-size: .95rem; color: #fff; 
+  background: var(--afy-bg-base); border: 1px solid var(--afy-bg-surface-light); 
+  border-radius: 10px; outline: none; transition: border-color 0.2s; font-family: inherit;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+#aidofy-meta-app .aidofy-meta-input:focus, #aidofy-meta-app .aidofy-meta-select:focus { border-color: var(--afy-accent-cyan); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+#aidofy-meta-app .aidofy-meta-input::placeholder { color: var(--afy-text-muted); }
+
+/* Model Cards */
+#aidofy-meta-app .aidofy-meta-model-group { display: flex; gap: 12px; flex-wrap: wrap; }
+#aidofy-meta-app .aidofy-meta-model-card {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border: 1px solid var(--afy-bg-surface-light); border-radius: 10px;
+  background: var(--afy-bg-surface); color: var(--afy-text-muted); cursor: pointer; font-weight: 600; font-size: 14px;
+  transition: all 0.2s ease; flex: 1; min-width: 100px; text-align: center; overflow: hidden;
+}
+#aidofy-meta-app .aidofy-meta-model-card input[type="radio"] { display: none; }
+#aidofy-meta-app .aidofy-meta-model-card:hover:not(.locked) { border-color: var(--afy-text-muted); color: #fff; }
+#aidofy-meta-app .aidofy-meta-model-card.active {
+  background: var(--afy-accent-cyan-glow); border-color: var(--afy-accent-cyan); color: #fff; 
+}
+#aidofy-meta-app .aidofy-meta-model-card.locked { opacity: 0.4; cursor: not-allowed; background: var(--afy-bg-base); border-style: dashed; }
+/* CHECKMARK BADGE */
+#aidofy-meta-app .aidofy-model-check {
+  position: absolute; top: 0; right: 0; width: 22px; height: 22px;
+  background: var(--afy-accent-cyan); color: #fff; border-bottom-left-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translate(100%, -100%); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#aidofy-meta-app .aidofy-meta-model-card.active .aidofy-model-check { opacity: 1; transform: translate(0, 0); }
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-weight: 600; border: none; border-radius: 8px; cursor: pointer;
+  transition: all .2s ease; font-family: inherit;
+}
+#aidofy-meta-app .aidofy-meta-btn-full { width: 100%; }
+#aidofy-meta-app .aidofy-meta-btn-lg { padding: 14px 28px; font-size: 1rem; }
+
+/* Enhanced Outline Button Animation */
+#aidofy-meta-app .aidofy-btn-outline { background: var(--afy-bg-surface); color: var(--afy-text-main); border: 1px solid var(--afy-bg-surface-light); padding: 12px 20px; font-size: .9rem; }
+#aidofy-meta-app .aidofy-btn-outline:hover { 
+  background: var(--afy-bg-surface-light); 
+  border-color: var(--afy-text-muted); 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+}
+
+#aidofy-meta-app .aidofy-btn-cyan { background: var(--gradient-primary); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 12px rgba(59, 130, 246, 0.2); padding: 12px 20px; }
+#aidofy-meta-app .aidofy-btn-cyan:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 6px 16px rgba(59, 130, 246, 0.3); transform: translateY(-1px); filter: brightness(1.1); }
+#aidofy-meta-app .aidofy-meta-btn:disabled { opacity: .5; cursor: not-allowed; transform: none !important; filter: grayscale(1); }
+
+/* Icon-Only Copy Button */
+#aidofy-meta-app .aidofy-meta-copy-icon-btn {
+  background: transparent; border: none; padding: 6px; border-radius: 6px;
+  color: var(--afy-text-muted); cursor: pointer; transition: all .15s ease;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+#aidofy-meta-app .aidofy-meta-copy-icon-btn:hover { background: var(--afy-bg-surface-light); color: #fff; }
+
+/* ── Processing ─────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-matrix-spinner { width: 64px; height: 64px; margin: 0 auto 24px; position: relative; }
+#aidofy-meta-app .aidofy-matrix-spinner::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 3px solid var(--afy-border-dim); border-top-color: var(--afy-accent-cyan);
+  animation: aidofy-meta-spin 1s linear infinite;
+}
+#aidofy-meta-app .aidofy-matrix-spinner::after {
+  content: ""; position: absolute; inset: 8px; border-radius: 50%;
+  border: 3px solid transparent; border-bottom-color: var(--afy-accent-violet);
+  animation: aidofy-meta-spin 1.5s linear infinite reverse;
+}
+#aidofy-meta-app .aidofy-meta-proc-title { font-size: 1.3rem; font-weight: 700; margin: 0 0 8px; color: #fff; }
+#aidofy-meta-app .aidofy-meta-proc-desc { color: var(--afy-text-muted); margin: 0; font-size: .95rem; }
+#aidofy-meta-app .aidofy-matrix-timer { font-family: 'SFMono-Regular', Consolas, Menlo, monospace; font-size: 26px; font-weight: 700; color: var(--afy-text-main); margin-top: 24px; letter-spacing: 0.05em; }
+
+/* ── The Telemetry & Insight Board (Result Header) ──────────────── */
+#aidofy-meta-app .aidofy-insight-board {
+  background: var(--afy-bg-surface); border: 1px solid var(--afy-bg-surface-light);
+  border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* REFINED HORIZONTAL ALIGNMENT */
+#aidofy-meta-app .aidofy-insight-top {
+  display: flex; justify-content: flex-start; align-items: center;
+  padding: 16px 24px; border-bottom: 1px solid var(--afy-bg-surface-light);
+  background: rgba(255,255,255,0.02); flex-wrap: wrap; gap: 16px;
+}
+#aidofy-meta-app .aidofy-insight-title { margin: 0; font-size: 1.2rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+#aidofy-meta-app .aidofy-insight-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+#aidofy-meta-app .aidofy-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+  border-radius: 6px; font-size: 11px; font-weight: 700; font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  text-transform: uppercase; border: 1px solid;
+}
+#aidofy-meta-app .aidofy-badge-violet { background: rgba(139, 92, 246, 0.15); color: #C4B5FD; border-color: rgba(139, 92, 246, 0.3); }
+#aidofy-meta-app .aidofy-badge-cyan { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border-color: rgba(56, 189, 248, 0.3); }
+
+#aidofy-meta-app .aidofy-insight-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+#aidofy-meta-app .aidofy-insight-section h4 { 
+  margin: 0 0 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; 
+  letter-spacing: 0.1em; color: var(--afy-text-muted); display: flex; align-items: center; gap: 6px;
+}
+#aidofy-meta-app .aidofy-concept-icon { color: #A78BFA; }
+#aidofy-meta-app .aidofy-context-icon { color: #38BDF8; }
+
+/* MONOSPACE INJECTION FOR CONCEPTS */
+#aidofy-meta-app .aidofy-monospace-text { 
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+#aidofy-meta-app .aidofy-insight-section p { margin: 0; font-size: 14.5px; color: #F1F5F9; line-height: 1.6; font-weight: 400; }
+
+#aidofy-meta-app .aidofy-insight-actions {
+  display: flex; gap: 12px; padding: 16px 24px; background: var(--afy-bg-base);
+  border-top: 1px solid var(--afy-bg-surface-light); flex-wrap: wrap;
+}
+#aidofy-meta-app .aidofy-insight-actions button { flex: 1; min-width: 140px; padding: 10px 16px; font-size: 0.9rem; }
+
+/* ── Result Data Terminals (Media, Category, Title, Keywords) ───── */
+#aidofy-meta-app .aidofy-matrix-blocks { display: flex; flex-direction: column; gap: 16px; }
+#aidofy-meta-app .aidofy-matrix-block { background: var(--afy-bg-base); border: 1px solid var(--afy-bg-surface-light); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+
+/* CENTERED HEADERS, INCREASED FONT SIZE */
+#aidofy-meta-app .matrix-block-header {
+  display: flex; justify-content: center; align-items: center; position: relative;
+  padding: 10px 16px; background: rgba(51, 65, 85, 0.4); border-bottom: 1px solid var(--afy-border-dim);
+  font-size: 13px; font-weight: 800; color: #94A3B8; letter-spacing: 0.1em;
+}
+#aidofy-meta-app .matrix-block-header span { text-align: center; }
+#aidofy-meta-app .matrix-block-header .aidofy-meta-copy-icon-btn {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+}
+
+#aidofy-meta-app .matrix-block-body { padding: 16px; }
+
+/* BOLDER, LARGER SKY BLUE TEXTAREA */
+#aidofy-meta-app .aidofy-meta-result-textarea {
+  width: 100%; border: none; background: transparent; font-size: 16px; 
+  color: #38BDF8; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-weight: 500;
+  outline: none; line-height: 1.6; resize: none; overflow: hidden;
+}
+#aidofy-meta-app .aidofy-meta-result-textarea::selection { background: rgba(56, 189, 248, 0.3); color: #fff; }
+
+/* ── Modals ─────────────────────────────────────────────────────── */
+#aidofy-meta-app .aidofy-meta-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+#aidofy-meta-app .aidofy-meta-modal-box {
+  background: var(--afy-bg-surface); border: 1px solid var(--afy-bg-surface-light); border-radius: 16px; 
+  width: 100%; max-width: 400px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); text-align: center;
+}
+#aidofy-meta-app .aidofy-meta-modal-content { padding: 40px 30px; }
+#aidofy-meta-app .aidofy-meta-modal-icon-wrap {
+  width: 64px; height: 64px; margin: 0 auto 20px; background: rgba(245, 158, 11, 0.1); color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center;
+}
+#aidofy-meta-app .aidofy-meta-modal-title { margin: 0 0 12px; font-size: 1.4rem; font-weight: 700; color: #fff; }
+#aidofy-meta-app .aidofy-meta-modal-desc { margin: 0 0 24px; font-size: 0.95rem; color: var(--afy-text-muted); }
+#aidofy-meta-app .aidofy-matrix-countdown { margin-bottom: 24px; padding: 12px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 13.5px; color: #FBBF24; font-weight: 700; font-family: monospace; }
+#aidofy-meta-app .aidofy-meta-modal-offer { background: var(--afy-bg-base); border: 1px solid var(--afy-bg-surface-light); border-radius: 10px; padding: 16px; margin-bottom: 28px; text-align: left; }
+#aidofy-meta-app .aidofy-offer-text { font-size: 12px; font-weight: 700; color: var(--afy-text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
+#aidofy-meta-app .aidofy-meta-modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+#aidofy-meta-app .aidofy-meta-modal-actions button { flex: 1; padding: 12px 0; }
+
+/* ── Specific Overrides for Errors/Success ──────────────────────── */
+#aidofy-meta-app .aidofy-success-icon-glow {
+  width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--afy-success); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+}
